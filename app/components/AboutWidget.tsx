@@ -1,39 +1,44 @@
-// components/widgets/AboutWidget.tsx
+import { User } from 'lucide-react';
 import { portfolioData } from '@/data/data';
 
-export default function AboutWidget() {
+interface AboutWidgetProps {
+  darkMode: boolean;
+}
+
+export default function AboutWidget({ darkMode }: AboutWidgetProps) {
+  const { personal } = portfolioData;
+  
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-6 h-full flex flex-col">
-      <div className="flex items-center gap-4 mb-4">
-        <div className="w-12 h-12 bg-gray-900 rounded-full flex items-center justify-center">
-          <span className="text-white font-mono text-lg">AC</span>
-        </div>
-        <div>
-          <h2 className="font-mono text-lg font-semibold text-gray-900">
-            {portfolioData.personal.name}
-          </h2>
-          <p className="font-mono text-sm text-gray-600">
-            {portfolioData.personal.title}
-          </p>
-        </div>
+    <div className={`
+      w-full h-auto
+      md:col-span-2 md:h-56
+      lg:col-span-2 lg:h-64
+      rounded-2xl p-6 transition-colors backdrop-blur-sm border ${
+      darkMode 
+        ? 'bg-white/10 border-white/20 text-white' 
+        : 'bg-black/10 border-black/20 text-black'
+    }`}>
+      <div className="flex items-center mb-4">
+        <User size={20} className="mr-2" />
+        <h3 className="font-mono text-sm font-semibold">About</h3>
       </div>
       
-      <p className="font-mono text-sm text-gray-700 mb-4 flex-1">
-        {portfolioData.personal.bio}
-      </p>
-      
-      <div className="space-y-2">
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <div className="w-4 h-4 border border-gray-400 rounded-sm flex items-center justify-center">
-            <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
-          </div>
-          <span className="font-mono">{portfolioData.personal.location}</span>
+      <div className="space-y-4">
+        <div>
+          <h2 className="font-mono text-xl font-bold">{personal.name}</h2>
+          <p className={`font-mono text-sm ${darkMode ? 'text-white/70' : 'text-black/70'}`}>
+            {personal.title}
+          </p>
         </div>
-        <div className="flex items-center gap-2 text-sm text-gray-600">
-          <div className="w-4 h-4 border border-gray-400 rounded-sm flex items-center justify-center">
-            <div className="w-2 h-1 bg-gray-400"></div>
-          </div>
-          <span className="font-mono">{portfolioData.personal.email}</span>
+        
+        <p className={`font-mono text-sm leading-relaxed ${
+          darkMode ? 'text-white/80' : 'text-black/80'
+        }`}>
+          {personal.bio}
+        </p>
+        
+        <div className={`font-mono text-xs ${darkMode ? 'text-white/60' : 'text-black/60'}`}>
+          📍 {personal.location}
         </div>
       </div>
     </div>
