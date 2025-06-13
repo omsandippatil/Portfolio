@@ -22,25 +22,23 @@ export default function Portfolio() {
       darkMode ? 'bg-black' : 'bg-white'
     } p-3 sm:p-4 md:p-6 lg:p-8`}>
       <div className="max-w-7xl mx-auto">
-        {/* Header */}
-        <div className="text-center mb-4 sm:mb-10">
-          <div className="flex justify-end items-center mb-6">
-            <button
-              onClick={() => setDarkMode(!darkMode)}
-              className={`p-2 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 ${
-                darkMode 
-                  ? 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/15' 
-                  : 'bg-black/10 backdrop-blur-md border border-black/20 text-black hover:bg-black/15'
-              }`}
-            >
-              {darkMode ? <Sun size={18} /> : <Moon size={18} />}
-            </button>
-          </div>
-          <h1 className={`font-mono text-lg sm:text-xl md:text-2xl font-bold mb-1 transition-colors duration-300 ${
-            darkMode ? 'text-white' : 'text-black'
+        {/* Minimal Header */}
+        <div className="flex justify-between items-center mb-4">
+          <h1 className={`font-mono text-sm font-medium transition-colors duration-300 ${
+            darkMode ? 'text-white/60' : 'text-black/60'
           }`}>
-            Developer Portfolio
+            Portfolio
           </h1>
+          <button
+            onClick={() => setDarkMode(!darkMode)}
+            className={`p-2 rounded-xl transition-all duration-300 hover:scale-105 active:scale-95 ${
+              darkMode 
+                ? 'bg-white/10 backdrop-blur-md border border-white/20 text-white hover:bg-white/15' 
+                : 'bg-black/10 backdrop-blur-md border border-black/20 text-black hover:bg-black/15'
+            }`}
+          >
+            {darkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
         </div>
 
         {/* Dynamic Widget Grid */}
