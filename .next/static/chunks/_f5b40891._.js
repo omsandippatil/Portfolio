@@ -788,121 +788,268 @@ __turbopack_context__.s({
     "default": (()=>ProjectsWidget)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$code$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Code$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/code.js [app-client] (ecmascript) <export default as Code>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$external$2d$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ExternalLink$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/external-link.js [app-client] (ecmascript) <export default as ExternalLink>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)");
 ;
+var _s = __turbopack_context__.k.signature();
+;
+;
 ;
 ;
 function ProjectsWidget({ darkMode }) {
+    _s();
     const { projects } = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["portfolioData"];
+    const scrollContainerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const [glowPosition, setGlowPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: 0,
+        y: 0
+    });
+    const handleMouseMove = (e)=>{
+        const rect = e.currentTarget.getBoundingClientRect();
+        setGlowPosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ProjectsWidget.useEffect": ()=>{
+            const scrollContainer = scrollContainerRef.current;
+            if (!scrollContainer) return;
+            let animationId;
+            let scrollTop = 0;
+            const scrollSpeed = 0.5;
+            const animate = {
+                "ProjectsWidget.useEffect.animate": ()=>{
+                    scrollTop += scrollSpeed;
+                    const scrollHeight = scrollContainer.scrollHeight;
+                    const clientHeight = scrollContainer.clientHeight;
+                    const maxScroll = scrollHeight - clientHeight;
+                    if (scrollTop >= maxScroll) {
+                        scrollTop = 0;
+                    }
+                    scrollContainer.scrollTop = scrollTop;
+                    animationId = requestAnimationFrame(animate);
+                }
+            }["ProjectsWidget.useEffect.animate"];
+            animationId = requestAnimationFrame(animate);
+            return ({
+                "ProjectsWidget.useEffect": ()=>{
+                    if (animationId) {
+                        cancelAnimationFrame(animationId);
+                    }
+                }
+            })["ProjectsWidget.useEffect"];
+        }
+    }["ProjectsWidget.useEffect"], [
+        projects
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `w-full sm:col-span-3 h-auto sm:h-64 lg:h-72 rounded-2xl p-6 transition-colors backdrop-blur-sm border overflow-hidden ${darkMode ? 'bg-white/10 border-white/20 text-white' : 'bg-black/10 border-black/20 text-black'}`,
+        className: `
+      relative group w-full h-auto
+      sm:col-span-3 sm:h-64 
+      lg:h-72
+    `,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center mb-4",
+                className: `
+          relative w-full h-full rounded-3xl p-6 overflow-hidden
+          backdrop-blur-md backdrop-saturate-150
+          border border-opacity-20 shadow-2xl
+          transition-all duration-500 ease-out
+          ${darkMode ? 'bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent border-white/25 text-white shadow-black/20' : 'bg-gradient-to-br from-black/[0.08] via-black/[0.05] to-transparent border-black/25 text-black shadow-black/10'}
+        `,
+                onMouseMove: handleMouseMove,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$code$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Code$3e$__["Code"], {
-                        size: 20,
-                        className: "mr-2"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none",
+                        style: {
+                            background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'} 0%, transparent 50%)`
+                        }
                     }, void 0, false, {
                         fileName: "[project]/app/components/ProjectsWidget.tsx",
-                        lineNumber: 18,
+                        lineNumber: 75,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "font-mono text-sm font-semibold",
-                        children: "Projects"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/ProjectsWidget.tsx",
-                        lineNumber: 19,
+                        lineNumber: 85,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "relative z-10 flex items-center mb-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: `p-2 rounded-xl backdrop-blur-sm mr-3 ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$code$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Code$3e$__["Code"], {
+                                    size: 18,
+                                    className: `${darkMode ? 'text-white' : 'text-black'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                    lineNumber: 98,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                lineNumber: 93,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "font-mono text-lg font-bold tracking-tight",
+                                children: "Projects"
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                lineNumber: 100,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/ProjectsWidget.tsx",
+                        lineNumber: 92,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        ref: scrollContainerRef,
+                        style: {
+                            scrollbarWidth: 'none',
+                            msOverflowStyle: 'none',
+                            WebkitScrollbar: 'none'
+                        },
+                        className: "jsx-c2def58941a14be3" + " " + "relative z-10 space-y-4 h-[calc(100%-80px)] overflow-hidden",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                                id: "c2def58941a14be3",
+                                children: "div.jsx-c2def58941a14be3::-webkit-scrollbar{display:none}"
+                            }, void 0, false, void 0, this),
+                            [
+                                ...projects,
+                                ...projects
+                            ].map((project, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "jsx-c2def58941a14be3" + " " + "space-y-3 mb-6",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "jsx-c2def58941a14be3" + " " + "flex items-center justify-between",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                    className: "jsx-c2def58941a14be3" + " " + "font-mono text-sm font-bold",
+                                                    children: project.title
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                                    lineNumber: 124,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "jsx-c2def58941a14be3" + " " + `p-1.5 rounded-lg backdrop-blur-sm ${darkMode ? 'bg-white/[0.05] border border-white/15' : 'bg-black/[0.05] border border-black/15'}`,
+                                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$external$2d$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ExternalLink$3e$__["ExternalLink"], {
+                                                        size: 12,
+                                                        className: darkMode ? 'text-white/60' : 'text-black/60'
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                                        lineNumber: 130,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                                    lineNumber: 125,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                            lineNumber: 123,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "jsx-c2def58941a14be3" + " " + `font-mono text-xs leading-relaxed ${darkMode ? 'text-white/70' : 'text-black/70'}`,
+                                            children: project.description
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                            lineNumber: 135,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "jsx-c2def58941a14be3" + " " + "flex flex-wrap gap-1",
+                                            children: project.tech.map((tech, techIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "jsx-c2def58941a14be3" + " " + `font-mono text-xs px-2 py-1 rounded-lg backdrop-blur-sm border font-medium ${darkMode ? 'bg-white/10 border-white/20 text-white/80' : 'bg-black/10 border-black/20 text-black/80'}`,
+                                                    children: tech
+                                                }, `${tech}-${index}-${techIndex}`, false, {
+                                                    fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                                    lineNumber: 144,
+                                                    columnNumber: 19
+                                                }, this))
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                            lineNumber: 142,
+                                            columnNumber: 15
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "jsx-c2def58941a14be3" + " " + `flex items-center space-x-2 font-mono text-xs font-medium ${project.status === 'Live' ? 'text-green-500' : darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "jsx-c2def58941a14be3" + " " + `w-2 h-2 rounded-full ${project.status === 'Live' ? 'bg-green-500 shadow-[0_0_8px_rgba(34,197,94,0.5)]' : darkMode ? 'bg-white/40' : 'bg-black/40'}`
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                                    lineNumber: 165,
+                                                    columnNumber: 17
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "jsx-c2def58941a14be3",
+                                                    children: project.status
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                                    lineNumber: 172,
+                                                    columnNumber: 17
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                            lineNumber: 158,
+                                            columnNumber: 15
+                                        }, this)
+                                    ]
+                                }, `${project.id}-${index}`, true, {
+                                    fileName: "[project]/app/components/ProjectsWidget.tsx",
+                                    lineNumber: 121,
+                                    columnNumber: 13
+                                }, this))
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/ProjectsWidget.tsx",
+                        lineNumber: 104,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ProjectsWidget.tsx",
+                        lineNumber: 179,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/ProjectsWidget.tsx",
-                lineNumber: 17,
+                lineNumber: 61,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-4 overflow-y-auto h-[calc(100%-60px)]",
-                children: projects.slice(0, 3).map((project)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "space-y-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center justify-between",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                        className: "font-mono text-sm font-semibold",
-                                        children: project.title
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/ProjectsWidget.tsx",
-                                        lineNumber: 26,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$external$2d$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__ExternalLink$3e$__["ExternalLink"], {
-                                        size: 14,
-                                        className: darkMode ? 'text-white/60' : 'text-black/60'
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/ProjectsWidget.tsx",
-                                        lineNumber: 27,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/ProjectsWidget.tsx",
-                                lineNumber: 25,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/70' : 'text-black/70'}`,
-                                children: project.description
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/ProjectsWidget.tsx",
-                                lineNumber: 29,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex flex-wrap gap-1",
-                                children: project.tech.map((tech)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: `font-mono text-xs px-2 py-1 rounded-md ${darkMode ? 'bg-white/20 text-white/80' : 'bg-black/20 text-black/80'}`,
-                                        children: tech
-                                    }, tech, false, {
-                                        fileName: "[project]/app/components/ProjectsWidget.tsx",
-                                        lineNumber: 34,
-                                        columnNumber: 17
-                                    }, this))
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/ProjectsWidget.tsx",
-                                lineNumber: 32,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: `font-mono text-xs ${project.status === 'Live' ? 'text-green-500' : darkMode ? 'text-white/60' : 'text-black/60'}`,
-                                children: project.status
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/ProjectsWidget.tsx",
-                                lineNumber: 46,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, project.id, true, {
-                        fileName: "[project]/app/components/ProjectsWidget.tsx",
-                        lineNumber: 24,
-                        columnNumber: 11
-                    }, this))
+                className: `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
             }, void 0, false, {
                 fileName: "[project]/app/components/ProjectsWidget.tsx",
-                lineNumber: 22,
+                lineNumber: 187,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/ProjectsWidget.tsx",
-        lineNumber: 12,
+        lineNumber: 55,
         columnNumber: 5
     }, this);
 }
+_s(ProjectsWidget, "VRDH45uUFRtBcVrVQ9DN3AS1ov8=");
 _c = ProjectsWidget;
 var _c;
 __turbopack_context__.k.register(_c, "ProjectsWidget");
@@ -919,12 +1066,14 @@ __turbopack_context__.s({
     "default": (()=>SkillsWidget)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/zap.js [app-client] (ecmascript) <export default as Zap>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/sparkles.js [app-client] (ecmascript) <export default as Sparkles>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)");
 ;
 var _s = __turbopack_context__.k.signature();
+;
 ;
 ;
 ;
@@ -943,69 +1092,85 @@ function SkillsWidget({ darkMode = false, className = '' }) {
             y: e.clientY - rect.top
         });
     };
+    // Create rows of skills for better grouping - more skills per row since they're smaller
+    const createSkillRows = (skillsArray)=>{
+        const rows = [];
+        const skillsPerRow = window.innerWidth < 640 ? 3 : 4; // More skills per row
+        for(let i = 0; i < skillsArray.length; i += skillsPerRow){
+            rows.push(skillsArray.slice(i, i + skillsPerRow));
+        }
+        return rows;
+    };
+    const skillRows = createSkillRows(skills);
+    // Duplicate rows for seamless loop
+    const duplicatedRows = [
+        ...skillRows,
+        ...skillRows
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `relative group col-span-1 h-48 md:h-56 lg:h-64 ${className}`,
+        className: "jsx-88fd063885f22d5a" + " " + `relative group col-span-1 h-48 md:h-56 lg:h-64 ${className}`,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: `
-          relative w-full h-full rounded-3xl p-6 overflow-hidden
+                onMouseMove: handleMouseMove,
+                className: "jsx-88fd063885f22d5a" + " " + `
+          relative w-full h-full rounded-3xl p-4 sm:p-6 overflow-hidden
           backdrop-blur-md backdrop-saturate-150
           border border-opacity-20 shadow-2xl
           transition-all duration-500 ease-out
           ${darkMode ? 'bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent border-white/25 text-white shadow-black/20' : 'bg-gradient-to-br from-black/[0.08] via-black/[0.05] to-transparent border-black/25 text-black shadow-black/10'}
         `,
-                onMouseMove: handleMouseMove,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none",
                         style: {
                             background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'} 0%, transparent 50%)`
-                        }
+                        },
+                        className: "jsx-88fd063885f22d5a" + " " + "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     }, void 0, false, {
                         fileName: "[project]/app/components/SkillsWidget.tsx",
-                        lineNumber: 45,
+                        lineNumber: 59,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
+                        className: "jsx-88fd063885f22d5a" + " " + `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/SkillsWidget.tsx",
-                        lineNumber: 55,
+                        lineNumber: 69,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative z-10 flex items-center justify-between mb-6",
+                        className: "jsx-88fd063885f22d5a" + " " + "relative z-10 flex items-center justify-between mb-2 sm:mb-3",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center space-x-2",
+                                className: "jsx-88fd063885f22d5a" + " " + "flex items-center space-x-2",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: `p-2 rounded-xl backdrop-blur-sm ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
+                                        className: "jsx-88fd063885f22d5a" + " " + `p-1.5 sm:p-2 rounded-xl backdrop-blur-sm ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
                                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$zap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Zap$3e$__["Zap"], {
-                                            size: 18,
-                                            className: `${darkMode ? 'text-white' : 'text-black'}`
+                                            size: 16,
+                                            className: `sm:w-[18px] sm:h-[18px] ${darkMode ? 'text-white' : 'text-black'}`
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/SkillsWidget.tsx",
-                                            lineNumber: 69,
+                                            lineNumber: 83,
                                             columnNumber: 15
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/components/SkillsWidget.tsx",
-                                        lineNumber: 64,
+                                        lineNumber: 78,
                                         columnNumber: 13
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "jsx-88fd063885f22d5a",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                                className: "font-mono text-lg font-bold tracking-tight",
+                                                className: "jsx-88fd063885f22d5a" + " " + "font-mono text-base sm:text-lg font-bold tracking-tight",
                                                 children: "Skills"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/SkillsWidget.tsx",
-                                                lineNumber: 72,
+                                                lineNumber: 86,
                                                 columnNumber: 15
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                className: `font-mono text-xs ${darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                                className: "jsx-88fd063885f22d5a" + " " + `font-mono text-xs ${darkMode ? 'text-white/60' : 'text-black/60'}`,
                                                 children: [
                                                     skills.length,
                                                     " ",
@@ -1013,112 +1178,147 @@ function SkillsWidget({ darkMode = false, className = '' }) {
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/components/SkillsWidget.tsx",
-                                                lineNumber: 73,
+                                                lineNumber: 87,
                                                 columnNumber: 15
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/SkillsWidget.tsx",
-                                        lineNumber: 71,
+                                        lineNumber: 85,
                                         columnNumber: 13
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/app/components/SkillsWidget.tsx",
-                                lineNumber: 63,
+                                lineNumber: 77,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$sparkles$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Sparkles$3e$__["Sparkles"], {
-                                size: 16,
-                                className: `${darkMode ? 'text-white/40' : 'text-black/40'} animate-pulse`
+                                size: 14,
+                                className: `sm:w-4 sm:h-4 ${darkMode ? 'text-white/40' : 'text-black/40'} animate-pulse`
                             }, void 0, false, {
                                 fileName: "[project]/app/components/SkillsWidget.tsx",
-                                lineNumber: 79,
+                                lineNumber: 93,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/SkillsWidget.tsx",
-                        lineNumber: 62,
+                        lineNumber: 76,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "relative z-10 flex flex-wrap gap-3 overflow-y-auto scrollbar-hide h-20 md:h-28 lg:h-36",
+                        className: "jsx-88fd063885f22d5a" + " " + "relative z-10 h-24 sm:h-28 md:h-32 lg:h-36 overflow-hidden",
                         children: skills.length === 0 ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: `w-full h-full flex items-center justify-center ${darkMode ? 'text-white/40' : 'text-black/40'}`,
+                            className: "jsx-88fd063885f22d5a" + " " + `w-full h-full flex items-center justify-start ${darkMode ? 'text-white/40' : 'text-black/40'}`,
                             children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: "font-mono text-sm",
+                                className: "jsx-88fd063885f22d5a" + " " + "font-mono text-sm",
                                 children: "No skills data available"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/SkillsWidget.tsx",
-                                lineNumber: 93,
+                                lineNumber: 105,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/components/SkillsWidget.tsx",
-                            lineNumber: 90,
+                            lineNumber: 102,
                             columnNumber: 13
-                        }, this) : skills.map((skill, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: `
-                  relative font-mono text-xs px-4 py-2 rounded-full
-                  backdrop-blur-sm border transition-all duration-300
-                  cursor-default select-none
-                  ${darkMode ? 'bg-white/[0.08] border-white/25 text-white/90 hover:bg-white/[0.12] hover:border-white/35' : 'bg-black/[0.08] border-black/25 text-black/90 hover:bg-black/[0.12] hover:border-black/35'}
-                  ${hoveredSkill === skill ? 'scale-105 shadow-lg' : 'hover:scale-102'}
-                `,
-                                onMouseEnter: ()=>setHoveredSkill(skill),
-                                onMouseLeave: ()=>setHoveredSkill(null),
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: `absolute inset-0 rounded-full ${hoveredSkill === skill ? darkMode ? 'shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]' : 'shadow-[inset_0_0_20px_rgba(0,0,0,0.05)]' : ''}`
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SkillsWidget.tsx",
-                                        lineNumber: 113,
-                                        columnNumber: 17
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                        className: "relative z-10 font-medium",
-                                        children: skill
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/SkillsWidget.tsx",
-                                        lineNumber: 121,
-                                        columnNumber: 17
-                                    }, this)
-                                ]
-                            }, `${skill}-${index}`, true, {
-                                fileName: "[project]/app/components/SkillsWidget.tsx",
-                                lineNumber: 97,
-                                columnNumber: 15
-                            }, this))
+                        }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            style: {
+                                animation: 'marquee-vertical 18s linear infinite'
+                            },
+                            className: "jsx-88fd063885f22d5a" + " " + "animate-marquee-vertical space-y-1.5 sm:space-y-2",
+                            children: duplicatedRows.map((row, rowIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "jsx-88fd063885f22d5a" + " " + "flex flex-wrap gap-1.5 sm:gap-2 justify-start",
+                                    children: row.map((skill, skillIndex)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            onMouseEnter: ()=>setHoveredSkill(skill),
+                                            onMouseLeave: ()=>setHoveredSkill(null),
+                                            className: "jsx-88fd063885f22d5a" + " " + `
+                        relative font-mono text-xs px-2 py-1 sm:px-2.5 sm:py-1 rounded-lg
+                        backdrop-blur-sm transition-all duration-300
+                        cursor-default select-none whitespace-nowrap
+                        ${darkMode ? 'bg-white/[0.06] text-white/80 hover:bg-white/[0.1] hover:text-white/90' : 'bg-black/[0.06] text-black/80 hover:bg-black/[0.1] hover:text-black/90'}
+                        ${hoveredSkill === skill ? 'scale-105' : 'hover:scale-102'}
+                      `,
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: "jsx-88fd063885f22d5a" + " " + `absolute inset-0 rounded-lg ${hoveredSkill === skill ? darkMode ? 'shadow-[inset_0_0_10px_rgba(255,255,255,0.08)]' : 'shadow-[inset_0_0_10px_rgba(0,0,0,0.04)]' : ''}`
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/SkillsWidget.tsx",
+                                                    lineNumber: 133,
+                                                    columnNumber: 23
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "jsx-88fd063885f22d5a" + " " + "relative z-10 font-medium",
+                                                    children: skill
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/SkillsWidget.tsx",
+                                                    lineNumber: 141,
+                                                    columnNumber: 23
+                                                }, this)
+                                            ]
+                                        }, `${skill}-${rowIndex}-${skillIndex}`, true, {
+                                            fileName: "[project]/app/components/SkillsWidget.tsx",
+                                            lineNumber: 117,
+                                            columnNumber: 21
+                                        }, this))
+                                }, rowIndex, false, {
+                                    fileName: "[project]/app/components/SkillsWidget.tsx",
+                                    lineNumber: 115,
+                                    columnNumber: 17
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/SkillsWidget.tsx",
+                            lineNumber: 108,
+                            columnNumber: 13
+                        }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/SkillsWidget.tsx",
-                        lineNumber: 86,
+                        lineNumber: 100,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
+                        className: "jsx-88fd063885f22d5a" + " " + `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/SkillsWidget.tsx",
-                        lineNumber: 128,
+                        lineNumber: 151,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-88fd063885f22d5a" + " " + `absolute top-0 left-0 right-0 h-12 sm:h-14 pointer-events-none z-20 ${darkMode ? 'bg-gradient-to-b from-black/40 via-black/20 to-transparent' : 'bg-gradient-to-b from-white/40 via-white/20 to-transparent'}`
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/SkillsWidget.tsx",
+                        lineNumber: 158,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-88fd063885f22d5a" + " " + `absolute bottom-0 left-0 right-0 h-12 sm:h-14 pointer-events-none z-20 ${darkMode ? 'bg-gradient-to-t from-black/40 via-black/20 to-transparent' : 'bg-gradient-to-t from-white/40 via-white/20 to-transparent'}`
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/SkillsWidget.tsx",
+                        lineNumber: 163,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/SkillsWidget.tsx",
-                lineNumber: 31,
+                lineNumber: 45,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
+                className: "jsx-88fd063885f22d5a" + " " + `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
             }, void 0, false, {
                 fileName: "[project]/app/components/SkillsWidget.tsx",
-                lineNumber: 136,
+                lineNumber: 171,
                 columnNumber: 7
-            }, this)
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                id: "88fd063885f22d5a",
+                children: "@keyframes marquee-vertical{0%{transform:translateY(0)}to{transform:translateY(-50%)}}.animate-marquee-vertical.jsx-88fd063885f22d5a{animation:18s linear infinite marquee-vertical}"
+            }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/SkillsWidget.tsx",
-        lineNumber: 27,
+        lineNumber: 41,
         columnNumber: 5
     }, this);
 }
@@ -1139,112 +1339,267 @@ __turbopack_context__.s({
     "default": (()=>ExperienceWidget)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$briefcase$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Briefcase$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/briefcase.js [app-client] (ecmascript) <export default as Briefcase>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)");
+;
+var _s = __turbopack_context__.k.signature();
 ;
 ;
 ;
 function ExperienceWidget({ darkMode }) {
+    _s();
     const { experience } = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["portfolioData"];
+    const scrollContainerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const [glowPosition, setGlowPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: 0,
+        y: 0
+    });
+    const handleMouseMove = (e)=>{
+        const rect = e.currentTarget.getBoundingClientRect();
+        setGlowPosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "ExperienceWidget.useEffect": ()=>{
+            const scrollContainer = scrollContainerRef.current;
+            if (!scrollContainer) return;
+            let animationId;
+            let scrollSpeed = 0.5; // Pixels per frame
+            let currentScroll = 0;
+            const smoothScroll = {
+                "ExperienceWidget.useEffect.smoothScroll": ()=>{
+                    if (!scrollContainer) return;
+                    currentScroll += scrollSpeed;
+                    // Check if we've scrolled past the content height
+                    const maxScroll = scrollContainer.scrollHeight - scrollContainer.clientHeight;
+                    if (currentScroll >= maxScroll) {
+                        currentScroll = 0; // Reset to top for seamless loop
+                    }
+                    scrollContainer.scrollTop = currentScroll;
+                    animationId = requestAnimationFrame(smoothScroll);
+                }
+            }["ExperienceWidget.useEffect.smoothScroll"];
+            // Start animation after a brief delay
+            const startAnimation = {
+                "ExperienceWidget.useEffect.startAnimation": ()=>{
+                    animationId = requestAnimationFrame(smoothScroll);
+                }
+            }["ExperienceWidget.useEffect.startAnimation"];
+            const timer = setTimeout(startAnimation, 1000);
+            // Pause on hover
+            const handleMouseEnter = {
+                "ExperienceWidget.useEffect.handleMouseEnter": ()=>{
+                    cancelAnimationFrame(animationId);
+                }
+            }["ExperienceWidget.useEffect.handleMouseEnter"];
+            const handleMouseLeave = {
+                "ExperienceWidget.useEffect.handleMouseLeave": ()=>{
+                    animationId = requestAnimationFrame(smoothScroll);
+                }
+            }["ExperienceWidget.useEffect.handleMouseLeave"];
+            scrollContainer.addEventListener('mouseenter', handleMouseEnter);
+            scrollContainer.addEventListener('mouseleave', handleMouseLeave);
+            return ({
+                "ExperienceWidget.useEffect": ()=>{
+                    clearTimeout(timer);
+                    cancelAnimationFrame(animationId);
+                    scrollContainer?.removeEventListener('mouseenter', handleMouseEnter);
+                    scrollContainer?.removeEventListener('mouseleave', handleMouseLeave);
+                }
+            })["ExperienceWidget.useEffect"];
+        }
+    }["ExperienceWidget.useEffect"], []);
+    // Duplicate content for seamless loop
+    const duplicatedExperience = [
+        ...experience,
+        ...experience
+    ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `col-span-1 h-64 md:h-72 lg:h-80 rounded-2xl p-6 transition-colors backdrop-blur-sm border overflow-hidden ${darkMode ? 'bg-white/10 border-white/20 text-white' : 'bg-black/10 border-black/20 text-black'}`,
+        className: `
+      relative group col-span-1 h-64 md:h-72 lg:h-80
+    `,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center mb-4",
+                className: `
+          relative w-full h-full rounded-3xl p-6 overflow-hidden
+          backdrop-blur-md backdrop-saturate-150
+          border border-opacity-20 shadow-2xl
+          transition-all duration-500 ease-out
+          ${darkMode ? 'bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent border-white/25 text-white shadow-black/20' : 'bg-gradient-to-br from-black/[0.08] via-black/[0.05] to-transparent border-black/25 text-black shadow-black/10'}
+        `,
+                onMouseMove: handleMouseMove,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$briefcase$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Briefcase$3e$__["Briefcase"], {
-                        size: 20,
-                        className: "mr-2"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none",
+                        style: {
+                            background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'} 0%, transparent 50%)`
+                        }
                     }, void 0, false, {
                         fileName: "[project]/app/components/ExperienceWidget.tsx",
-                        lineNumber: 18,
+                        lineNumber: 95,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "font-mono text-sm font-semibold",
-                        children: "Experience"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/ExperienceWidget.tsx",
-                        lineNumber: 19,
+                        lineNumber: 105,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "relative z-10 flex items-center mb-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: `p-2 rounded-xl backdrop-blur-sm mr-3 ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$briefcase$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Briefcase$3e$__["Briefcase"], {
+                                    size: 18,
+                                    className: `${darkMode ? 'text-white' : 'text-black'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                    lineNumber: 118,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                lineNumber: 113,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "font-mono text-lg font-bold tracking-tight",
+                                children: "Experience"
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                lineNumber: 120,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/ExperienceWidget.tsx",
+                        lineNumber: 112,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        ref: scrollContainerRef,
+                        className: "relative z-10 h-[calc(100%-80px)] overflow-hidden",
+                        style: {
+                            scrollbarWidth: 'none',
+                            msOverflowStyle: 'none',
+                            WebkitScrollbar: 'none'
+                        },
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "space-y-6 pb-6",
+                            children: duplicatedExperience.map((exp, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "space-y-3 flex-shrink-0",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: "flex items-center gap-3",
+                                            children: [
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                    className: `w-2 h-2 rounded-full flex-shrink-0 ${darkMode ? 'bg-gradient-to-r from-blue-400 to-cyan-400' : 'bg-gradient-to-r from-blue-500 to-cyan-500'}`
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                                    lineNumber: 138,
+                                                    columnNumber: 19
+                                                }, this),
+                                                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                    className: "font-mono text-sm font-bold leading-tight",
+                                                    children: exp.company
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                                    lineNumber: 143,
+                                                    columnNumber: 19
+                                                }, this)
+                                            ]
+                                        }, void 0, true, {
+                                            fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                            lineNumber: 137,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: `font-mono text-xs font-medium leading-relaxed ml-5 ${darkMode ? 'text-white/80' : 'text-black/80'}`,
+                                            children: exp.position
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                            lineNumber: 149,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: `font-mono text-xs leading-relaxed ml-5 ${darkMode ? 'text-white/70' : 'text-black/70'}`,
+                                            children: exp.description
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                            lineNumber: 156,
+                                            columnNumber: 17
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                            className: `flex items-center ml-5 ${darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                            children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: `px-2 py-1 rounded-lg backdrop-blur-sm ${darkMode ? 'bg-white/[0.05] border border-white/15' : 'bg-black/[0.05] border border-black/15'}`,
+                                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                    className: "font-mono text-xs font-medium",
+                                                    children: exp.duration
+                                                }, void 0, false, {
+                                                    fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                                    lineNumber: 171,
+                                                    columnNumber: 21
+                                                }, this)
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                                lineNumber: 166,
+                                                columnNumber: 19
+                                            }, this)
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                            lineNumber: 163,
+                                            columnNumber: 17
+                                        }, this)
+                                    ]
+                                }, `${exp.id}-${index}`, true, {
+                                    fileName: "[project]/app/components/ExperienceWidget.tsx",
+                                    lineNumber: 135,
+                                    columnNumber: 15
+                                }, this))
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/ExperienceWidget.tsx",
+                            lineNumber: 133,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ExperienceWidget.tsx",
+                        lineNumber: 124,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ExperienceWidget.tsx",
+                        lineNumber: 182,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/ExperienceWidget.tsx",
-                lineNumber: 17,
+                lineNumber: 81,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-4 overflow-y-auto h-[calc(100%-60px)]",
-                children: experience.map((exp)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "space-y-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center gap-2",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "w-2 h-2 rounded-full bg-blue-500"
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/ExperienceWidget.tsx",
-                                        lineNumber: 26,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                        className: "font-mono text-sm font-semibold",
-                                        children: exp.company
-                                    }, void 0, false, {
-                                        fileName: "[project]/app/components/ExperienceWidget.tsx",
-                                        lineNumber: 27,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/ExperienceWidget.tsx",
-                                lineNumber: 25,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/70' : 'text-black/70'}`,
-                                children: exp.position
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/ExperienceWidget.tsx",
-                                lineNumber: 29,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/60' : 'text-black/60'}`,
-                                children: exp.description
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/ExperienceWidget.tsx",
-                                lineNumber: 32,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/50' : 'text-black/50'}`,
-                                children: exp.duration
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/ExperienceWidget.tsx",
-                                lineNumber: 35,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, exp.id, true, {
-                        fileName: "[project]/app/components/ExperienceWidget.tsx",
-                        lineNumber: 24,
-                        columnNumber: 11
-                    }, this))
+                className: `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
             }, void 0, false, {
                 fileName: "[project]/app/components/ExperienceWidget.tsx",
-                lineNumber: 22,
+                lineNumber: 190,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/ExperienceWidget.tsx",
-        lineNumber: 12,
+        lineNumber: 77,
         columnNumber: 5
     }, this);
 }
+_s(ExperienceWidget, "VRDH45uUFRtBcVrVQ9DN3AS1ov8=");
 _c = ExperienceWidget;
 var _c;
 __turbopack_context__.k.register(_c, "ExperienceWidget");
@@ -1261,16 +1616,31 @@ __turbopack_context__.s({
     "default": (()=>ContactWidget)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/mail.js [app-client] (ecmascript) <export default as Mail>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$github$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Github$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/github.js [app-client] (ecmascript) <export default as Github>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$linkedin$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Linkedin$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/linkedin.js [app-client] (ecmascript) <export default as Linkedin>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$twitter$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Twitter$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/twitter.js [app-client] (ecmascript) <export default as Twitter>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)");
 ;
+var _s = __turbopack_context__.k.signature();
+;
 ;
 ;
 function ContactWidget({ darkMode }) {
+    _s();
     const { personal, social } = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["portfolioData"];
+    const [glowPosition, setGlowPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: 0,
+        y: 0
+    });
+    const handleMouseMove = (e)=>{
+        const rect = e.currentTarget.getBoundingClientRect();
+        setGlowPosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+    };
     const socialLinks = [
         {
             icon: __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$github$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Github$3e$__["Github"],
@@ -1289,114 +1659,198 @@ function ContactWidget({ darkMode }) {
         }
     ];
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `h-full rounded-2xl p-6 transition-colors backdrop-blur-sm border ${darkMode ? 'bg-white/10 border-white/20 text-white' : 'bg-black/10 border-black/20 text-black'}`,
+        className: "relative group w-full h-full",
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center mb-4",
-                children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__["Mail"], {
-                        size: 20,
-                        className: "mr-2"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/ContactWidget.tsx",
-                        lineNumber: 24,
-                        columnNumber: 9
-                    }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "font-mono text-sm font-semibold",
-                        children: "Contact"
-                    }, void 0, false, {
-                        fileName: "[project]/app/components/ContactWidget.tsx",
-                        lineNumber: 25,
-                        columnNumber: 9
-                    }, this)
-                ]
-            }, void 0, true, {
-                fileName: "[project]/app/components/ContactWidget.tsx",
-                lineNumber: 23,
-                columnNumber: 7
-            }, this),
-            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-6",
+                className: `
+          relative w-full h-full rounded-3xl p-6 overflow-hidden
+          backdrop-blur-md backdrop-saturate-150
+          border border-opacity-20 shadow-2xl
+          transition-all duration-500 ease-out
+          ${darkMode ? 'bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent border-white/25 text-white shadow-black/20' : 'bg-gradient-to-br from-black/[0.08] via-black/[0.05] to-transparent border-black/25 text-black shadow-black/10'}
+        `,
+                onMouseMove: handleMouseMove,
                 children: [
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-center",
+                        className: "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none",
+                        style: {
+                            background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'} 0%, transparent 50%)`
+                        }
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ContactWidget.tsx",
+                        lineNumber: 44,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/ContactWidget.tsx",
+                        lineNumber: 54,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "relative z-10 flex items-center mb-6",
                         children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                className: "font-mono text-lg font-bold mb-2",
-                                children: "Let's Connect"
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: `p-2 rounded-xl backdrop-blur-sm mr-3 ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$mail$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Mail$3e$__["Mail"], {
+                                    size: 18,
+                                    className: `${darkMode ? 'text-white' : 'text-black'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/ContactWidget.tsx",
+                                    lineNumber: 67,
+                                    columnNumber: 13
+                                }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/ContactWidget.tsx",
-                                lineNumber: 30,
+                                lineNumber: 62,
                                 columnNumber: 11
                             }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: `font-mono text-sm ${darkMode ? 'text-white/70' : 'text-black/70'}`,
-                                children: personal.email
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "font-mono text-lg font-bold tracking-tight",
+                                children: "Contact"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/ContactWidget.tsx",
-                                lineNumber: 31,
+                                lineNumber: 69,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/ContactWidget.tsx",
-                        lineNumber: 29,
+                        lineNumber: 61,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "flex justify-center space-x-4",
-                        children: socialLinks.map(({ icon: Icon, url, label })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
-                                href: url,
-                                target: "_blank",
-                                rel: "noopener noreferrer",
-                                className: `p-3 rounded-full transition-colors ${darkMode ? 'bg-white/20 hover:bg-white/30 text-white' : 'bg-black/20 hover:bg-black/30 text-black'}`,
-                                "aria-label": label,
-                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
-                                    size: 20
+                        className: "relative z-10 space-y-6",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-center",
+                                children: [
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                        className: "font-mono text-xl font-bold mb-3",
+                                        children: "Let's Connect"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/ContactWidget.tsx",
+                                        lineNumber: 76,
+                                        columnNumber: 13
+                                    }, this),
+                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: `inline-block px-4 py-2 rounded-xl backdrop-blur-sm ${darkMode ? 'bg-white/[0.08] border border-white/20' : 'bg-black/[0.08] border border-black/20'}`,
+                                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: `font-mono text-sm font-medium ${darkMode ? 'text-white/80' : 'text-black/80'}`,
+                                            children: personal.email
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/ContactWidget.tsx",
+                                            lineNumber: 82,
+                                            columnNumber: 15
+                                        }, this)
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/ContactWidget.tsx",
+                                        lineNumber: 77,
+                                        columnNumber: 13
+                                    }, this)
+                                ]
+                            }, void 0, true, {
+                                fileName: "[project]/app/components/ContactWidget.tsx",
+                                lineNumber: 75,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "flex justify-center space-x-4",
+                                children: socialLinks.map(({ icon: Icon, url, label })=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("a", {
+                                        href: url,
+                                        target: "_blank",
+                                        rel: "noopener noreferrer",
+                                        className: `
+                  group/social relative p-3 rounded-xl backdrop-blur-sm
+                  transition-all duration-300 ease-out
+                  hover:scale-110 hover:-translate-y-1
+                  ${darkMode ? 'bg-white/[0.12] border border-white/25 text-white hover:bg-white/[0.18] hover:border-white/35 shadow-lg hover:shadow-white/10' : 'bg-black/[0.12] border border-black/25 text-black hover:bg-black/[0.18] hover:border-black/35 shadow-lg hover:shadow-black/20'}
+                `,
+                                        "aria-label": label,
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: `absolute inset-0 rounded-xl opacity-0 group-hover/social:opacity-100 transition-opacity duration-300 ${darkMode ? 'shadow-[inset_0_0_20px_rgba(255,255,255,0.1)]' : 'shadow-[inset_0_0_20px_rgba(0,0,0,0.05)]'}`
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/ContactWidget.tsx",
+                                                lineNumber: 110,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(Icon, {
+                                                size: 20,
+                                                className: "relative z-10"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/ContactWidget.tsx",
+                                                lineNumber: 115,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, label, true, {
+                                        fileName: "[project]/app/components/ContactWidget.tsx",
+                                        lineNumber: 93,
+                                        columnNumber: 15
+                                    }, this))
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/ContactWidget.tsx",
+                                lineNumber: 91,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "text-center",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: `inline-block px-3 py-1.5 rounded-lg backdrop-blur-sm ${darkMode ? 'bg-white/[0.05] border border-white/15' : 'bg-black/[0.05] border border-black/15'}`,
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                        className: `font-mono text-xs font-medium ${darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                        children: "Available for freelance projects and collaborations"
+                                    }, void 0, false, {
+                                        fileName: "[project]/app/components/ContactWidget.tsx",
+                                        lineNumber: 127,
+                                        columnNumber: 15
+                                    }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/ContactWidget.tsx",
-                                    lineNumber: 50,
-                                    columnNumber: 15
+                                    lineNumber: 122,
+                                    columnNumber: 13
                                 }, this)
-                            }, label, false, {
+                            }, void 0, false, {
                                 fileName: "[project]/app/components/ContactWidget.tsx",
-                                lineNumber: 38,
-                                columnNumber: 13
-                            }, this))
-                    }, void 0, false, {
+                                lineNumber: 121,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
                         fileName: "[project]/app/components/ContactWidget.tsx",
-                        lineNumber: 36,
+                        lineNumber: 73,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "text-center",
-                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                            className: `font-mono text-xs ${darkMode ? 'text-white/60' : 'text-black/60'}`,
-                            children: "Available for freelance projects and collaborations"
-                        }, void 0, false, {
-                            fileName: "[project]/app/components/ContactWidget.tsx",
-                            lineNumber: 56,
-                            columnNumber: 11
-                        }, this)
+                        className: `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/ContactWidget.tsx",
-                        lineNumber: 55,
+                        lineNumber: 137,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/ContactWidget.tsx",
-                lineNumber: 28,
+                lineNumber: 30,
+                columnNumber: 7
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                className: `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
+            }, void 0, false, {
+                fileName: "[project]/app/components/ContactWidget.tsx",
+                lineNumber: 145,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/ContactWidget.tsx",
-        lineNumber: 18,
+        lineNumber: 28,
         columnNumber: 5
     }, this);
 }
+_s(ContactWidget, "P1hxACkauNelUwSBz8mmX8D/o/k=");
 _c = ContactWidget;
 var _c;
 __turbopack_context__.k.register(_c, "ContactWidget");
@@ -1432,7 +1886,10 @@ function AchievementsWidget({ darkMode = false }) {
     });
     const [isHovered, setIsHovered] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
     const scrollContainerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const contentRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
     const animationRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
+    const scrollPositionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
+    const isTransitioningRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(false);
     const handleMouseMove = (e)=>{
         const rect = e.currentTarget.getBoundingClientRect();
         setGlowPosition({
@@ -1444,21 +1901,48 @@ function AchievementsWidget({ darkMode = false }) {
         if (animationRef.current) {
             cancelAnimationFrame(animationRef.current);
         }
-        let scrollPosition = 0;
-        const scrollSpeed = 1;
+        const scrollSpeed = 0.8; // Smooth consistent speed
         const animate = ()=>{
-            if (!scrollContainerRef.current) {
+            if (!scrollContainerRef.current || !contentRef.current || isHovered) {
+                animationRef.current = requestAnimationFrame(animate);
                 return;
             }
             const container = scrollContainerRef.current;
-            const maxScroll = container.scrollHeight - container.clientHeight;
-            // Continuously scroll downward
-            scrollPosition += scrollSpeed;
-            // Reset to top when reaching bottom for continuous loop
-            if (scrollPosition >= maxScroll) {
-                scrollPosition = 0;
+            const content = contentRef.current;
+            const containerHeight = container.clientHeight;
+            const contentHeight = content.scrollHeight;
+            const maxScroll = contentHeight - containerHeight;
+            if (maxScroll <= 0) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
             }
-            container.scrollTop = scrollPosition;
+            // Increment scroll position
+            scrollPositionRef.current += scrollSpeed;
+            // Check if we've reached the end
+            if (scrollPositionRef.current >= maxScroll) {
+                // Smoothly transition back to top
+                if (!isTransitioningRef.current) {
+                    isTransitioningRef.current = true;
+                    // Quick fade transition
+                    container.style.transition = 'opacity 200ms ease-out';
+                    container.style.opacity = '0.7';
+                    setTimeout(()=>{
+                        // Reset scroll position
+                        scrollPositionRef.current = 0;
+                        container.scrollTop = 0;
+                        // Fade back in
+                        setTimeout(()=>{
+                            container.style.opacity = '1';
+                            setTimeout(()=>{
+                                container.style.transition = '';
+                                isTransitioningRef.current = false;
+                            }, 200);
+                        }, 50);
+                    }, 100);
+                }
+            } else {
+                container.scrollTop = scrollPositionRef.current;
+            }
             animationRef.current = requestAnimationFrame(animate);
         };
         animationRef.current = requestAnimationFrame(animate);
@@ -1470,21 +1954,22 @@ function AchievementsWidget({ darkMode = false }) {
         }
     };
     const handleMouseEnter = ()=>{
-    // Remove hover pause functionality
+        setIsHovered(true);
     };
     const handleMouseLeave = ()=>{
-    // Remove hover pause functionality
-    };
-    const handleWheel = (e)=>{
-        // Remove wheel control
-        e.preventDefault();
+        setIsHovered(false);
     };
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
         "AchievementsWidget.useEffect": ()=>{
-            if (achievements && achievements.length > 1) {
-                startAutoScroll();
+            if (achievements && achievements.length > 0) {
+                const timer = setTimeout({
+                    "AchievementsWidget.useEffect.timer": ()=>{
+                        startAutoScroll();
+                    }
+                }["AchievementsWidget.useEffect.timer"], 500); // Small delay for smooth start
                 return ({
                     "AchievementsWidget.useEffect": ()=>{
+                        clearTimeout(timer);
                         stopAutoScroll();
                     }
                 })["AchievementsWidget.useEffect"];
@@ -1494,7 +1979,7 @@ function AchievementsWidget({ darkMode = false }) {
         achievements
     ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: "jsx-7a5a825b2468367c" + " " + `
+        className: "jsx-c12f021053e1107" + " " + `
       relative group w-full h-auto
       md:col-span-2 md:h-56
       lg:col-span-2 lg:h-64
@@ -1502,7 +1987,9 @@ function AchievementsWidget({ darkMode = false }) {
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                 onMouseMove: handleMouseMove,
-                className: "jsx-7a5a825b2468367c" + " " + `
+                onMouseEnter: handleMouseEnter,
+                onMouseLeave: handleMouseLeave,
+                className: "jsx-c12f021053e1107" + " " + `
           relative w-full h-full rounded-3xl p-6 overflow-hidden
           backdrop-blur-md backdrop-saturate-150
           border border-opacity-20 shadow-2xl
@@ -1514,88 +2001,89 @@ function AchievementsWidget({ darkMode = false }) {
                         style: {
                             background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'} 0%, transparent 50%)`
                         },
-                        className: "jsx-7a5a825b2468367c" + " " + "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                        className: "jsx-c12f021053e1107" + " " + "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     }, void 0, false, {
                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                        lineNumber: 106,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-7a5a825b2468367c" + " " + `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
+                        className: "jsx-c12f021053e1107" + " " + `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                        lineNumber: 116,
+                        lineNumber: 151,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-7a5a825b2468367c" + " " + "relative z-10 flex items-center mb-4",
+                        className: "jsx-c12f021053e1107" + " " + "relative z-10 flex items-center mb-4",
                         children: [
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-7a5a825b2468367c" + " " + `p-2 rounded-xl backdrop-blur-sm mr-3 ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
+                                className: "jsx-c12f021053e1107" + " " + `p-2 rounded-xl backdrop-blur-sm mr-3 ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$award$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Award$3e$__["Award"], {
                                     size: 18,
                                     className: `${darkMode ? 'text-white' : 'text-black'}`
                                 }, void 0, false, {
                                     fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                    lineNumber: 129,
+                                    lineNumber: 164,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                lineNumber: 124,
+                                lineNumber: 159,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                                className: "jsx-7a5a825b2468367c" + " " + "font-mono text-lg font-bold tracking-tight",
+                                className: "jsx-c12f021053e1107" + " " + "font-mono text-lg font-bold tracking-tight",
                                 children: "Achievements"
                             }, void 0, false, {
                                 fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                lineNumber: 131,
+                                lineNumber: 166,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                        lineNumber: 123,
+                        lineNumber: 158,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                         ref: scrollContainerRef,
-                        className: "jsx-7a5a825b2468367c" + " " + "relative z-10 h-[calc(100%-64px)] overflow-y-auto scrollbar-none",
+                        style: {
+                            scrollbarWidth: 'none',
+                            msOverflowStyle: 'none'
+                        },
+                        className: "jsx-c12f021053e1107" + " " + "relative z-10 h-[calc(100%-64px)] overflow-y-auto",
                         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                            className: "jsx-7a5a825b2468367c" + " " + "space-y-6 pb-8",
-                            children: achievements && achievements.length > 0 ? // Duplicate achievements for seamless loop effect
-                            [
-                                ...achievements,
-                                ...achievements
-                            ].map((achievement, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "jsx-7a5a825b2468367c" + " " + `
+                            ref: contentRef,
+                            className: "jsx-c12f021053e1107" + " " + "space-y-4 pb-8",
+                            children: achievements && achievements.length > 0 ? achievements.map((achievement, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "jsx-c12f021053e1107" + " " + `
                     relative p-4 rounded-2xl transition-all duration-300
                     ${darkMode ? 'bg-white/[0.03] border border-white/10 hover:bg-white/[0.05] hover:border-white/20' : 'bg-black/[0.03] border border-black/10 hover:bg-black/[0.05] hover:border-black/20'}
                   `,
                                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "jsx-7a5a825b2468367c" + " " + "flex items-start gap-3",
+                                        className: "jsx-c12f021053e1107" + " " + "flex items-start gap-3",
                                         children: [
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "jsx-7a5a825b2468367c" + " " + "w-3 h-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-1 flex-shrink-0 shadow-lg"
+                                                className: "jsx-c12f021053e1107" + " " + "w-3 h-3 rounded-full bg-gradient-to-r from-yellow-400 to-yellow-600 mt-1 flex-shrink-0 shadow-lg"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                                lineNumber: 154,
+                                                lineNumber: 195,
                                                 columnNumber: 21
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                                className: "jsx-7a5a825b2468367c" + " " + "flex-1 min-w-0",
+                                                className: "jsx-c12f021053e1107" + " " + "flex-1 min-w-0",
                                                 children: [
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                                        className: "jsx-7a5a825b2468367c" + " " + "font-mono text-sm font-bold mb-1",
+                                                        className: "jsx-c12f021053e1107" + " " + "font-mono text-sm font-bold mb-1",
                                                         children: achievement.title
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                                        lineNumber: 156,
+                                                        lineNumber: 197,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "jsx-7a5a825b2468367c" + " " + `font-mono text-xs font-medium mb-2 ${darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                                        className: "jsx-c12f021053e1107" + " " + `font-mono text-xs font-medium mb-2 ${darkMode ? 'text-white/60' : 'text-black/60'}`,
                                                         children: [
                                                             achievement.organization,
                                                             " • ",
@@ -1603,107 +2091,107 @@ function AchievementsWidget({ darkMode = false }) {
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                                        lineNumber: 159,
+                                                        lineNumber: 200,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                                        className: "jsx-7a5a825b2468367c" + " " + `font-mono text-sm leading-relaxed ${darkMode ? 'text-white/80' : 'text-black/80'}`,
+                                                        className: "jsx-c12f021053e1107" + " " + `font-mono text-sm leading-relaxed ${darkMode ? 'text-white/80' : 'text-black/80'}`,
                                                         children: achievement.description
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                                        lineNumber: 164,
+                                                        lineNumber: 205,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, void 0, true, {
                                                 fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                                lineNumber: 155,
+                                                lineNumber: 196,
                                                 columnNumber: 21
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                        lineNumber: 153,
+                                        lineNumber: 194,
                                         columnNumber: 19
                                     }, this)
                                 }, `${achievement.id || achievement.title}-${index}`, false, {
                                     fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                    lineNumber: 143,
+                                    lineNumber: 184,
                                     columnNumber: 17
                                 }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "jsx-7a5a825b2468367c" + " " + "flex items-center justify-center h-full",
+                                className: "jsx-c12f021053e1107" + " " + "flex items-center justify-center h-full",
                                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                    className: "jsx-7a5a825b2468367c" + " " + "text-center",
+                                    className: "jsx-c12f021053e1107" + " " + "text-center",
                                     children: [
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$award$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Award$3e$__["Award"], {
                                             size: 32,
                                             className: `mx-auto mb-2 ${darkMode ? 'text-white/30' : 'text-black/30'}`
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                            lineNumber: 176,
+                                            lineNumber: 217,
                                             columnNumber: 19
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                            className: "jsx-7a5a825b2468367c" + " " + `font-mono text-sm ${darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                            className: "jsx-c12f021053e1107" + " " + `font-mono text-sm ${darkMode ? 'text-white/60' : 'text-black/60'}`,
                                             children: "No achievements data available"
                                         }, void 0, false, {
                                             fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                            lineNumber: 177,
+                                            lineNumber: 218,
                                             columnNumber: 19
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                    lineNumber: 175,
+                                    lineNumber: 216,
                                     columnNumber: 17
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/components/AchievementsWidget.tsx",
-                                lineNumber: 174,
+                                lineNumber: 215,
                                 columnNumber: 15
                             }, this)
                         }, void 0, false, {
                             fileName: "[project]/app/components/AchievementsWidget.tsx",
-                            lineNumber: 139,
+                            lineNumber: 178,
                             columnNumber: 11
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                        lineNumber: 135,
+                        lineNumber: 170,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "jsx-7a5a825b2468367c" + " " + `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
+                        className: "jsx-c12f021053e1107" + " " + `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/AchievementsWidget.tsx",
-                        lineNumber: 189,
+                        lineNumber: 228,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/AchievementsWidget.tsx",
-                lineNumber: 92,
+                lineNumber: 125,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "jsx-7a5a825b2468367c" + " " + `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
+                className: "jsx-c12f021053e1107" + " " + `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
             }, void 0, false, {
                 fileName: "[project]/app/components/AchievementsWidget.tsx",
-                lineNumber: 197,
+                lineNumber: 236,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                id: "7a5a825b2468367c",
-                children: ".scrollbar-none.jsx-7a5a825b2468367c{-ms-overflow-style:none;scrollbar-width:none}.scrollbar-none.jsx-7a5a825b2468367c::-webkit-scrollbar{display:none}"
+                id: "c12f021053e1107",
+                children: "div.jsx-c12f021053e1107::-webkit-scrollbar{display:none}"
             }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/AchievementsWidget.tsx",
-        lineNumber: 86,
+        lineNumber: 119,
         columnNumber: 5
     }, this);
 }
-_s(AchievementsWidget, "0wxBzQMrH29wnEu4kCCzSci2doU=");
+_s(AchievementsWidget, "4E55SUA4YUsxQlLgsgfkiF3pJ9g=");
 _c = AchievementsWidget;
 var _c;
 __turbopack_context__.k.register(_c, "AchievementsWidget");
@@ -1720,147 +2208,360 @@ __turbopack_context__.s({
     "default": (()=>OpenSourceWidget)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$git$2d$branch$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GitBranch$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/git-branch.js [app-client] (ecmascript) <export default as GitBranch>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/star.js [app-client] (ecmascript) <export default as Star>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$git$2d$fork$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GitFork$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/git-fork.js [app-client] (ecmascript) <export default as GitFork>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)");
 ;
+var _s = __turbopack_context__.k.signature();
+;
+;
 ;
 ;
 function OpenSourceWidget({ darkMode }) {
+    _s();
     const { openSource } = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["portfolioData"];
+    const [glowPosition, setGlowPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: 0,
+        y: 0
+    });
+    const handleMouseMove = (e)=>{
+        const rect = e.currentTarget.getBoundingClientRect();
+        setGlowPosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+    };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `col-span-1 h-64 md:h-72 lg:h-80 rounded-2xl p-6 transition-colors backdrop-blur-sm border overflow-hidden ${darkMode ? 'bg-white/10 border-white/20 text-white' : 'bg-black/10 border-black/20 text-black'}`,
+        className: "jsx-3e2ad0f9b5de3251" + " " + `
+      relative group col-span-1 h-64 md:h-72 lg:h-80
+    `,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center mb-4",
+                onMouseMove: handleMouseMove,
+                className: "jsx-3e2ad0f9b5de3251" + " " + `
+          relative w-full h-full rounded-3xl p-6 overflow-hidden
+          backdrop-blur-md backdrop-saturate-150
+          border border-opacity-20 shadow-2xl
+          transition-all duration-500 ease-out
+          ${darkMode ? 'bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent border-white/25 text-white shadow-black/20' : 'bg-gradient-to-br from-black/[0.08] via-black/[0.05] to-transparent border-black/25 text-black shadow-black/10'}
+        `,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$git$2d$branch$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GitBranch$3e$__["GitBranch"], {
-                        size: 20,
-                        className: "mr-2"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'} 0%, transparent 50%)`
+                        },
+                        className: "jsx-3e2ad0f9b5de3251" + " " + "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     }, void 0, false, {
                         fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                        lineNumber: 18,
+                        lineNumber: 40,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "font-mono text-sm font-semibold",
-                        children: "Open Source"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-3e2ad0f9b5de3251" + " " + `absolute inset-0 rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                        lineNumber: 19,
+                        lineNumber: 50,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-3e2ad0f9b5de3251" + " " + "relative z-10 flex items-center mb-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "jsx-3e2ad0f9b5de3251" + " " + `p-2 rounded-xl backdrop-blur-sm mr-3 ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$git$2d$branch$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GitBranch$3e$__["GitBranch"], {
+                                    size: 18,
+                                    className: `${darkMode ? 'text-white' : 'text-black'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                    lineNumber: 63,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                lineNumber: 58,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "jsx-3e2ad0f9b5de3251" + " " + "font-mono text-lg font-bold tracking-tight",
+                                children: "Open Source"
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                lineNumber: 65,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                        lineNumber: 57,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            scrollbarWidth: 'none',
+                            msOverflowStyle: 'none'
+                        },
+                        className: "jsx-3e2ad0f9b5de3251" + " " + "relative z-10 h-[calc(100%-80px)] overflow-hidden",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            className: "jsx-3e2ad0f9b5de3251" + " " + "animate-marquee-vertical",
+                            children: [
+                                openSource.map((repo, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "jsx-3e2ad0f9b5de3251" + " " + "mb-6 flex-shrink-0 space-y-3",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-3e2ad0f9b5de3251" + " " + "flex items-center gap-3",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `w-2 h-2 rounded-full flex-shrink-0 ${darkMode ? 'bg-gradient-to-r from-green-400 to-blue-400' : 'bg-gradient-to-r from-green-500 to-blue-500'}`
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 81,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + "font-mono text-sm font-bold leading-tight",
+                                                        children: repo.name
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 86,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                lineNumber: 80,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "jsx-3e2ad0f9b5de3251" + " " + `font-mono text-xs leading-relaxed ml-5 ${darkMode ? 'text-white/70' : 'text-black/70'}`,
+                                                children: repo.description
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                lineNumber: 90,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-3e2ad0f9b5de3251" + " " + "flex items-center gap-4 ml-5",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `flex items-center gap-1 px-2 py-1 rounded-lg backdrop-blur-sm ${darkMode ? 'bg-white/[0.05] border border-white/15' : 'bg-black/[0.05] border border-black/15'}`,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__["Star"], {
+                                                                size: 12
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 103,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "jsx-3e2ad0f9b5de3251" + " " + "font-mono text-xs",
+                                                                children: repo.stars
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 104,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 98,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `flex items-center gap-1 px-2 py-1 rounded-lg backdrop-blur-sm ${darkMode ? 'bg-white/[0.05] border border-white/15' : 'bg-black/[0.05] border border-black/15'}`,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$git$2d$fork$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GitFork$3e$__["GitFork"], {
+                                                                size: 12
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 111,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "jsx-3e2ad0f9b5de3251" + " " + "font-mono text-xs",
+                                                                children: repo.forks
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 112,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 106,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `px-2 py-1 rounded-md backdrop-blur-sm font-mono text-xs ${darkMode ? 'bg-white/[0.05] border border-white/10 text-white/60' : 'bg-black/[0.05] border border-black/10 text-black/60'}`,
+                                                        children: repo.language
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 114,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                lineNumber: 97,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, `${repo.id}-${index}`, true, {
+                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                        lineNumber: 78,
+                                        columnNumber: 15
+                                    }, this)),
+                                openSource.map((repo, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "jsx-3e2ad0f9b5de3251" + " " + "mb-6 flex-shrink-0 space-y-3",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-3e2ad0f9b5de3251" + " " + "flex items-center gap-3",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `w-2 h-2 rounded-full flex-shrink-0 ${darkMode ? 'bg-gradient-to-r from-green-400 to-blue-400' : 'bg-gradient-to-r from-green-500 to-blue-500'}`
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 129,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + "font-mono text-sm font-bold leading-tight",
+                                                        children: repo.name
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 134,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                lineNumber: 128,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                className: "jsx-3e2ad0f9b5de3251" + " " + `font-mono text-xs leading-relaxed ml-5 ${darkMode ? 'text-white/70' : 'text-black/70'}`,
+                                                children: repo.description
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                lineNumber: 138,
+                                                columnNumber: 17
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-3e2ad0f9b5de3251" + " " + "flex items-center gap-4 ml-5",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `flex items-center gap-1 px-2 py-1 rounded-lg backdrop-blur-sm ${darkMode ? 'bg-white/[0.05] border border-white/15' : 'bg-black/[0.05] border border-black/15'}`,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__["Star"], {
+                                                                size: 12
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 151,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "jsx-3e2ad0f9b5de3251" + " " + "font-mono text-xs",
+                                                                children: repo.stars
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 152,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 146,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `flex items-center gap-1 px-2 py-1 rounded-lg backdrop-blur-sm ${darkMode ? 'bg-white/[0.05] border border-white/15' : 'bg-black/[0.05] border border-black/15'}`,
+                                                        children: [
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$git$2d$fork$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GitFork$3e$__["GitFork"], {
+                                                                size: 12
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 159,
+                                                                columnNumber: 21
+                                                            }, this),
+                                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
+                                                                className: "jsx-3e2ad0f9b5de3251" + " " + "font-mono text-xs",
+                                                                children: repo.forks
+                                                            }, void 0, false, {
+                                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                                lineNumber: 160,
+                                                                columnNumber: 21
+                                                            }, this)
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 154,
+                                                        columnNumber: 19
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                        className: "jsx-3e2ad0f9b5de3251" + " " + `px-2 py-1 rounded-md backdrop-blur-sm font-mono text-xs ${darkMode ? 'bg-white/[0.05] border border-white/10 text-white/60' : 'bg-black/[0.05] border border-black/10 text-black/60'}`,
+                                                        children: repo.language
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                        lineNumber: 162,
+                                                        columnNumber: 19
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                                lineNumber: 145,
+                                                columnNumber: 17
+                                            }, this)
+                                        ]
+                                    }, `${repo.id}-duplicate-${index}`, true, {
+                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                                        lineNumber: 126,
+                                        columnNumber: 15
+                                    }, this))
+                            ]
+                        }, void 0, true, {
+                            fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                            lineNumber: 76,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                        lineNumber: 69,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-3e2ad0f9b5de3251" + " " + `absolute inset-0 rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
+                        lineNumber: 176,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                lineNumber: 17,
+                lineNumber: 26,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-4 overflow-y-auto h-[calc(100%-60px)]",
-                children: openSource.slice(0, 2).map((repo)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "space-y-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                className: "font-mono text-sm font-semibold",
-                                children: repo.name
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                lineNumber: 25,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/70' : 'text-black/70'}`,
-                                children: repo.description
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                lineNumber: 26,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                className: "flex items-center gap-4",
-                                children: [
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center gap-1",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$star$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__Star$3e$__["Star"], {
-                                                size: 12
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                                lineNumber: 31,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-mono text-xs",
-                                                children: repo.stars
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                                lineNumber: 32,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                        lineNumber: 30,
-                                        columnNumber: 15
-                                    }, this),
-                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                                        className: "flex items-center gap-1",
-                                        children: [
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$git$2d$fork$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GitFork$3e$__["GitFork"], {
-                                                size: 12
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                                lineNumber: 35,
-                                                columnNumber: 17
-                                            }, this),
-                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                                className: "font-mono text-xs",
-                                                children: repo.forks
-                                            }, void 0, false, {
-                                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                                lineNumber: 36,
-                                                columnNumber: 17
-                                            }, this)
-                                        ]
-                                    }, void 0, true, {
-                                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                        lineNumber: 34,
-                                        columnNumber: 15
-                                    }, this)
-                                ]
-                            }, void 0, true, {
-                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                lineNumber: 29,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/60' : 'text-black/60'}`,
-                                children: repo.language
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                                lineNumber: 39,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, repo.id, true, {
-                        fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                        lineNumber: 24,
-                        columnNumber: 11
-                    }, this))
+                className: "jsx-3e2ad0f9b5de3251" + " " + `absolute inset-0 rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
             }, void 0, false, {
                 fileName: "[project]/app/components/OpenSourceWidget.tsx",
-                lineNumber: 22,
+                lineNumber: 184,
                 columnNumber: 7
-            }, this)
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                id: "3e2ad0f9b5de3251",
+                children: "@keyframes marquee-vertical{0%{transform:translateY(0)}to{transform:translateY(-50%)}}.animate-marquee-vertical.jsx-3e2ad0f9b5de3251{animation:20s linear infinite marquee-vertical}.animate-marquee-vertical.jsx-3e2ad0f9b5de3251:hover{animation-play-state:paused}@media (width<=768px){.animate-marquee-vertical.jsx-3e2ad0f9b5de3251{animation-duration:15s}}"
+            }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/OpenSourceWidget.tsx",
-        lineNumber: 12,
+        lineNumber: 22,
         columnNumber: 5
     }, this);
 }
+_s(OpenSourceWidget, "P1hxACkauNelUwSBz8mmX8D/o/k=");
 _c = OpenSourceWidget;
 var _c;
 __turbopack_context__.k.register(_c, "OpenSourceWidget");
@@ -1877,96 +2578,331 @@ __turbopack_context__.s({
     "default": (()=>EducationWidget)
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/styled-jsx/style.js [app-client] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/compiled/react/index.js [app-client] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__ = __turbopack_context__.i("[project]/node_modules/lucide-react/dist/esm/icons/graduation-cap.js [app-client] (ecmascript) <export default as GraduationCap>");
 var __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/data/data.ts [app-client] (ecmascript)");
 ;
+var _s = __turbopack_context__.k.signature();
 ;
 ;
-function EducationWidget({ darkMode }) {
+;
+;
+function EducationWidget({ darkMode = false }) {
+    _s();
     const { education } = __TURBOPACK__imported__module__$5b$project$5d2f$data$2f$data$2e$ts__$5b$app$2d$client$5d$__$28$ecmascript$29$__["portfolioData"];
+    const [glowPosition, setGlowPosition] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])({
+        x: 0,
+        y: 0
+    });
+    const [isHovered, setIsHovered] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useState"])(false);
+    const scrollContainerRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const contentRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(null);
+    const animationRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])();
+    const scrollPositionRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(0);
+    const isTransitioningRef = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRef"])(false);
+    const handleMouseMove = (e)=>{
+        const rect = e.currentTarget.getBoundingClientRect();
+        setGlowPosition({
+            x: e.clientX - rect.left,
+            y: e.clientY - rect.top
+        });
+    };
+    const startAutoScroll = ()=>{
+        if (animationRef.current) {
+            cancelAnimationFrame(animationRef.current);
+        }
+        const scrollSpeed = 0.8; // Smooth consistent speed
+        const animate = ()=>{
+            if (!scrollContainerRef.current || !contentRef.current || isHovered) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
+            }
+            const container = scrollContainerRef.current;
+            const content = contentRef.current;
+            const containerHeight = container.clientHeight;
+            const contentHeight = content.scrollHeight;
+            const maxScroll = contentHeight - containerHeight;
+            if (maxScroll <= 0) {
+                animationRef.current = requestAnimationFrame(animate);
+                return;
+            }
+            // Increment scroll position
+            scrollPositionRef.current += scrollSpeed;
+            // Check if we've reached the end
+            if (scrollPositionRef.current >= maxScroll) {
+                // Smoothly transition back to top
+                if (!isTransitioningRef.current) {
+                    isTransitioningRef.current = true;
+                    // Quick fade transition
+                    container.style.transition = 'opacity 200ms ease-out';
+                    container.style.opacity = '0.7';
+                    setTimeout(()=>{
+                        // Reset scroll position
+                        scrollPositionRef.current = 0;
+                        container.scrollTop = 0;
+                        // Fade back in
+                        setTimeout(()=>{
+                            container.style.opacity = '1';
+                            setTimeout(()=>{
+                                container.style.transition = '';
+                                isTransitioningRef.current = false;
+                            }, 200);
+                        }, 50);
+                    }, 100);
+                }
+            } else {
+                container.scrollTop = scrollPositionRef.current;
+            }
+            animationRef.current = requestAnimationFrame(animate);
+        };
+        animationRef.current = requestAnimationFrame(animate);
+    };
+    const stopAutoScroll = ()=>{
+        if (animationRef.current) {
+            cancelAnimationFrame(animationRef.current);
+            animationRef.current = undefined;
+        }
+    };
+    const handleMouseEnter = ()=>{
+        setIsHovered(true);
+    };
+    const handleMouseLeave = ()=>{
+        setIsHovered(false);
+    };
+    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
+        "EducationWidget.useEffect": ()=>{
+            if (education && education.length > 0) {
+                const timer = setTimeout({
+                    "EducationWidget.useEffect.timer": ()=>{
+                        startAutoScroll();
+                    }
+                }["EducationWidget.useEffect.timer"], 500); // Small delay for smooth start
+                return ({
+                    "EducationWidget.useEffect": ()=>{
+                        clearTimeout(timer);
+                        stopAutoScroll();
+                    }
+                })["EducationWidget.useEffect"];
+            }
+        }
+    }["EducationWidget.useEffect"], [
+        education
+    ]);
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-        className: `w-full h-auto md:col-span-2 md:h-64 lg:h-72 rounded-2xl p-6 transition-colors backdrop-blur-sm border overflow-hidden ${darkMode ? 'bg-white/10 border-white/20 text-white' : 'bg-black/10 border-black/20 text-black'}`,
+        className: "jsx-c12f021053e1107" + " " + `
+      relative group w-full h-80
+      md:col-span-2 md:h-64
+      lg:h-72
+    `,
         children: [
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "flex items-center mb-4",
+                onMouseMove: handleMouseMove,
+                onMouseEnter: handleMouseEnter,
+                onMouseLeave: handleMouseLeave,
+                className: "jsx-c12f021053e1107" + " " + `
+          relative w-full h-full rounded-2xl sm:rounded-3xl p-4 sm:p-6 overflow-hidden
+          backdrop-blur-md backdrop-saturate-150
+          border border-opacity-20 shadow-2xl
+          transition-all duration-500 ease-out
+          ${darkMode ? 'bg-gradient-to-br from-white/[0.08] via-white/[0.05] to-transparent border-white/25 text-white shadow-black/20' : 'bg-gradient-to-br from-black/[0.08] via-black/[0.05] to-transparent border-black/25 text-black shadow-black/10'}
+        `,
                 children: [
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__["GraduationCap"], {
-                        size: 20,
-                        className: "mr-2"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        style: {
+                            background: `radial-gradient(circle at ${glowPosition.x}px ${glowPosition.y}px, ${darkMode ? 'rgba(255,255,255,0.1)' : 'rgba(0,0,0,0.05)'} 0%, transparent 50%)`
+                        },
+                        className: "jsx-c12f021053e1107" + " " + "absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
                     }, void 0, false, {
                         fileName: "[project]/app/components/EducationWidget.tsx",
-                        lineNumber: 18,
+                        lineNumber: 141,
                         columnNumber: 9
                     }, this),
-                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
-                        className: "font-mono text-sm font-semibold",
-                        children: "Education"
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-c12f021053e1107" + " " + `absolute inset-0 rounded-2xl sm:rounded-3xl ${darkMode ? 'shadow-[inset_0_0_40px_rgba(255,255,255,0.05)]' : 'shadow-[inset_0_0_40px_rgba(0,0,0,0.03)]'}`
                     }, void 0, false, {
                         fileName: "[project]/app/components/EducationWidget.tsx",
-                        lineNumber: 19,
+                        lineNumber: 151,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-c12f021053e1107" + " " + "relative z-10 flex items-center mb-4",
+                        children: [
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "jsx-c12f021053e1107" + " " + `p-2 rounded-xl backdrop-blur-sm mr-3 ${darkMode ? 'bg-white/10 border border-white/20' : 'bg-black/10 border border-black/20'}`,
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__["GraduationCap"], {
+                                    size: 18,
+                                    className: `${darkMode ? 'text-white' : 'text-black'}`
+                                }, void 0, false, {
+                                    fileName: "[project]/app/components/EducationWidget.tsx",
+                                    lineNumber: 164,
+                                    columnNumber: 13
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/EducationWidget.tsx",
+                                lineNumber: 159,
+                                columnNumber: 11
+                            }, this),
+                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
+                                className: "jsx-c12f021053e1107" + " " + "font-mono text-lg font-bold tracking-tight",
+                                children: "Education"
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/EducationWidget.tsx",
+                                lineNumber: 166,
+                                columnNumber: 11
+                            }, this)
+                        ]
+                    }, void 0, true, {
+                        fileName: "[project]/app/components/EducationWidget.tsx",
+                        lineNumber: 158,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        ref: scrollContainerRef,
+                        style: {
+                            scrollbarWidth: 'none',
+                            msOverflowStyle: 'none'
+                        },
+                        className: "jsx-c12f021053e1107" + " " + "relative z-10 h-[calc(100%-64px)] overflow-y-auto",
+                        children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                            ref: contentRef,
+                            className: "jsx-c12f021053e1107" + " " + "space-y-4 pb-8",
+                            children: education && education.length > 0 ? education.map((edu, index)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "jsx-c12f021053e1107" + " " + `
+                    relative p-4 rounded-2xl transition-all duration-300
+                    ${darkMode ? 'bg-white/[0.03] border border-white/10 hover:bg-white/[0.05] hover:border-white/20' : 'bg-black/[0.03] border border-black/10 hover:bg-black/[0.05] hover:border-black/20'}
+                  `,
+                                    children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                        className: "jsx-c12f021053e1107" + " " + "flex items-start gap-3",
+                                        children: [
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-c12f021053e1107" + " " + "w-3 h-3 rounded-full bg-gradient-to-r from-blue-400 to-blue-600 mt-1 flex-shrink-0 shadow-lg"
+                                            }, void 0, false, {
+                                                fileName: "[project]/app/components/EducationWidget.tsx",
+                                                lineNumber: 195,
+                                                columnNumber: 21
+                                            }, this),
+                                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                                className: "jsx-c12f021053e1107" + " " + "flex-1 min-w-0",
+                                                children: [
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
+                                                        className: "jsx-c12f021053e1107" + " " + "font-mono text-sm font-bold mb-1",
+                                                        children: edu.institution
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/EducationWidget.tsx",
+                                                        lineNumber: 197,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "jsx-c12f021053e1107" + " " + `font-mono text-xs font-medium mb-2 ${darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                                        children: [
+                                                            edu.degree,
+                                                            " • ",
+                                                            edu.duration
+                                                        ]
+                                                    }, void 0, true, {
+                                                        fileName: "[project]/app/components/EducationWidget.tsx",
+                                                        lineNumber: 200,
+                                                        columnNumber: 23
+                                                    }, this),
+                                                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                                        className: "jsx-c12f021053e1107" + " " + `font-mono text-sm leading-relaxed ${darkMode ? 'text-white/80' : 'text-black/80'}`,
+                                                        children: edu.description
+                                                    }, void 0, false, {
+                                                        fileName: "[project]/app/components/EducationWidget.tsx",
+                                                        lineNumber: 205,
+                                                        columnNumber: 23
+                                                    }, this)
+                                                ]
+                                            }, void 0, true, {
+                                                fileName: "[project]/app/components/EducationWidget.tsx",
+                                                lineNumber: 196,
+                                                columnNumber: 21
+                                            }, this)
+                                        ]
+                                    }, void 0, true, {
+                                        fileName: "[project]/app/components/EducationWidget.tsx",
+                                        lineNumber: 194,
+                                        columnNumber: 19
+                                    }, this)
+                                }, `${edu.id || edu.institution}-${index}`, false, {
+                                    fileName: "[project]/app/components/EducationWidget.tsx",
+                                    lineNumber: 184,
+                                    columnNumber: 17
+                                }, this)) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                className: "jsx-c12f021053e1107" + " " + "flex items-center justify-center h-full",
+                                children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                                    className: "jsx-c12f021053e1107" + " " + "text-center",
+                                    children: [
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$graduation$2d$cap$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__$3c$export__default__as__GraduationCap$3e$__["GraduationCap"], {
+                                            size: 32,
+                                            className: `mx-auto mb-2 ${darkMode ? 'text-white/30' : 'text-black/30'}`
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/EducationWidget.tsx",
+                                            lineNumber: 217,
+                                            columnNumber: 19
+                                        }, this),
+                                        /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
+                                            className: "jsx-c12f021053e1107" + " " + `font-mono text-sm ${darkMode ? 'text-white/60' : 'text-black/60'}`,
+                                            children: "No education data available"
+                                        }, void 0, false, {
+                                            fileName: "[project]/app/components/EducationWidget.tsx",
+                                            lineNumber: 218,
+                                            columnNumber: 19
+                                        }, this)
+                                    ]
+                                }, void 0, true, {
+                                    fileName: "[project]/app/components/EducationWidget.tsx",
+                                    lineNumber: 216,
+                                    columnNumber: 17
+                                }, this)
+                            }, void 0, false, {
+                                fileName: "[project]/app/components/EducationWidget.tsx",
+                                lineNumber: 215,
+                                columnNumber: 15
+                            }, this)
+                        }, void 0, false, {
+                            fileName: "[project]/app/components/EducationWidget.tsx",
+                            lineNumber: 178,
+                            columnNumber: 11
+                        }, this)
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/EducationWidget.tsx",
+                        lineNumber: 170,
+                        columnNumber: 9
+                    }, this),
+                    /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                        className: "jsx-c12f021053e1107" + " " + `absolute inset-0 rounded-2xl sm:rounded-3xl pointer-events-none ${darkMode ? 'shadow-[0_0_0_1px_rgba(255,255,255,0.1)_inset]' : 'shadow-[0_0_0_1px_rgba(0,0,0,0.1)_inset]'}`
+                    }, void 0, false, {
+                        fileName: "[project]/app/components/EducationWidget.tsx",
+                        lineNumber: 228,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/components/EducationWidget.tsx",
-                lineNumber: 17,
+                lineNumber: 125,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                className: "space-y-4 overflow-y-auto h-[calc(100%-60px)]",
-                children: education.map((edu)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
-                        className: "space-y-2",
-                        children: [
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h4", {
-                                className: "font-mono text-sm font-semibold",
-                                children: edu.institution
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/EducationWidget.tsx",
-                                lineNumber: 25,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/70' : 'text-black/70'}`,
-                                children: edu.degree
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/EducationWidget.tsx",
-                                lineNumber: 26,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/60' : 'text-black/60'}`,
-                                children: edu.description
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/EducationWidget.tsx",
-                                lineNumber: 29,
-                                columnNumber: 13
-                            }, this),
-                            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
-                                className: `font-mono text-xs ${darkMode ? 'text-white/50' : 'text-black/50'}`,
-                                children: edu.duration
-                            }, void 0, false, {
-                                fileName: "[project]/app/components/EducationWidget.tsx",
-                                lineNumber: 32,
-                                columnNumber: 13
-                            }, this)
-                        ]
-                    }, edu.id, true, {
-                        fileName: "[project]/app/components/EducationWidget.tsx",
-                        lineNumber: 24,
-                        columnNumber: 11
-                    }, this))
+                className: "jsx-c12f021053e1107" + " " + `absolute inset-0 rounded-2xl sm:rounded-3xl opacity-50 blur-xl transition-opacity duration-500 ${darkMode ? 'bg-gradient-to-br from-white/5 to-transparent' : 'bg-gradient-to-br from-black/5 to-transparent'} group-hover:opacity-70`
             }, void 0, false, {
                 fileName: "[project]/app/components/EducationWidget.tsx",
-                lineNumber: 22,
+                lineNumber: 236,
                 columnNumber: 7
-            }, this)
+            }, this),
+            /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$styled$2d$jsx$2f$style$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
+                id: "c12f021053e1107",
+                children: "div.jsx-c12f021053e1107::-webkit-scrollbar{display:none}"
+            }, void 0, false, void 0, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/components/EducationWidget.tsx",
-        lineNumber: 12,
+        lineNumber: 119,
         columnNumber: 5
     }, this);
 }
+_s(EducationWidget, "4E55SUA4YUsxQlLgsgfkiF3pJ9g=");
 _c = EducationWidget;
 var _c;
 __turbopack_context__.k.register(_c, "EducationWidget");

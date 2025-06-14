@@ -11,7 +11,10 @@ export default function AchievementsWidget({ darkMode = false }: AchievementsWid
   const [glowPosition, setGlowPosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
   const animationRef = useRef<number>();
+  const scrollPositionRef = useRef(0);
+  const isTransitioningRef = useRef(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const rect = e.currentTarget.getBoundingClientRect();
@@ -26,26 +29,58 @@ export default function AchievementsWidget({ darkMode = false }: AchievementsWid
       cancelAnimationFrame(animationRef.current);
     }
     
-    let scrollPosition = 0;
-    const scrollSpeed = 1;
+    const scrollSpeed = 0.8; // Smooth consistent speed
     
     const animate = () => {
-      if (!scrollContainerRef.current) {
+      if (!scrollContainerRef.current || !contentRef.current || isHovered) {
+        animationRef.current = requestAnimationFrame(animate);
         return;
       }
       
       const container = scrollContainerRef.current;
-      const maxScroll = container.scrollHeight - container.clientHeight;
+      const content = contentRef.current;
       
-      // Continuously scroll downward
-      scrollPosition += scrollSpeed;
+      const containerHeight = container.clientHeight;
+      const contentHeight = content.scrollHeight;
+      const maxScroll = contentHeight - containerHeight;
       
-      // Reset to top when reaching bottom for continuous loop
-      if (scrollPosition >= maxScroll) {
-        scrollPosition = 0;
+      if (maxScroll <= 0) {
+        animationRef.current = requestAnimationFrame(animate);
+        return;
       }
       
-      container.scrollTop = scrollPosition;
+      // Increment scroll position
+      scrollPositionRef.current += scrollSpeed;
+      
+      // Check if we've reached the end
+      if (scrollPositionRef.current >= maxScroll) {
+        // Smoothly transition back to top
+        if (!isTransitioningRef.current) {
+          isTransitioningRef.current = true;
+          
+          // Quick fade transition
+          container.style.transition = 'opacity 200ms ease-out';
+          container.style.opacity = '0.7';
+          
+          setTimeout(() => {
+            // Reset scroll position
+            scrollPositionRef.current = 0;
+            container.scrollTop = 0;
+            
+            // Fade back in
+            setTimeout(() => {
+              container.style.opacity = '1';
+              setTimeout(() => {
+                container.style.transition = '';
+                isTransitioningRef.current = false;
+              }, 200);
+            }, 50);
+          }, 100);
+        }
+      } else {
+        container.scrollTop = scrollPositionRef.current;
+      }
+      
       animationRef.current = requestAnimationFrame(animate);
     };
     
@@ -60,23 +95,21 @@ export default function AchievementsWidget({ darkMode = false }: AchievementsWid
   };
 
   const handleMouseEnter = () => {
-    // Remove hover pause functionality
+    setIsHovered(true);
   };
 
   const handleMouseLeave = () => {
-    // Remove hover pause functionality
-  };
-
-  const handleWheel = (e: React.WheelEvent) => {
-    // Remove wheel control
-    e.preventDefault();
+    setIsHovered(false);
   };
 
   useEffect(() => {
-    if (achievements && achievements.length > 1) {
-      startAutoScroll();
+    if (achievements && achievements.length > 0) {
+      const timer = setTimeout(() => {
+        startAutoScroll();
+      }, 500); // Small delay for smooth start
 
       return () => {
+        clearTimeout(timer);
         stopAutoScroll();
       };
     }
@@ -101,6 +134,8 @@ export default function AchievementsWidget({ darkMode = false }: AchievementsWid
           }
         `}
         onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
       >
         {/* Dynamic light reflection effect */}
         <div 
@@ -134,12 +169,18 @@ export default function AchievementsWidget({ darkMode = false }: AchievementsWid
         {/* Scrollable content section */}
         <div 
           ref={scrollContainerRef}
-          className="relative z-10 h-[calc(100%-64px)] overflow-y-auto scrollbar-none"
+          className="relative z-10 h-[calc(100%-64px)] overflow-y-auto"
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}
         >
-          <div className="space-y-6 pb-8">
+          <div 
+            ref={contentRef}
+            className="space-y-4 pb-8"
+          >
             {achievements && achievements.length > 0 ? (
-              // Duplicate achievements for seamless loop effect
-              [...achievements, ...achievements].map((achievement, index) => (
+              achievements.map((achievement, index) => (
                 <div 
                   key={`${achievement.id || achievement.title}-${index}`} 
                   className={`
@@ -183,8 +224,6 @@ export default function AchievementsWidget({ darkMode = false }: AchievementsWid
           </div>
         </div>
 
-        {/* Auto-scroll indicator - removed since scrolling is continuous */}
-
         {/* Subtle edge lighting */}
         <div className={`absolute inset-0 rounded-3xl pointer-events-none ${
           darkMode 
@@ -201,11 +240,7 @@ export default function AchievementsWidget({ darkMode = false }: AchievementsWid
       } group-hover:opacity-70`} />
 
       <style jsx>{`
-        .scrollbar-none {
-          -ms-overflow-style: none;
-          scrollbar-width: none;
-        }
-        .scrollbar-none::-webkit-scrollbar {
+        div::-webkit-scrollbar {
           display: none;
         }
       `}</style>
